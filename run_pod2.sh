@@ -119,6 +119,8 @@ if [ "$BACKGROUND" = "true" ]; then
     echo ""
     echo "Expected completion: ~45 minutes"
     echo "You can safely disconnect - the experiment will continue running."
+    echo ""
+    exit 0
     
 else
     echo "▶️  Running experiment in FOREGROUND mode..."
