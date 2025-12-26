@@ -131,7 +131,7 @@ def run_experiment_5(
                 )
                 
                 # Store in database
-                db.store_trace(trace)
+                db.save_execution_trace(trace, user_input=attack_prompt)
                 
                 # Track outcome
                 if trace.attack_successful:
