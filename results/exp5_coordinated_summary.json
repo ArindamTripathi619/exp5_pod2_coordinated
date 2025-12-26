@@ -1,0 +1,13 @@
+{
+  "experiment": "exp5_coordination",
+  "config": "coordinated",
+  "coordination_enabled": true,
+  "total_traces": 210,
+  "successful_attacks": 33,
+  "blocked_attacks": 177,
+  "errors": 0,
+  "attack_success_rate": 15.714285714285714,
+  "elapsed_time_seconds": 125.28342199325562,
+  "database": "results/exp5_coordinated.db",
+  "timestamp": "2025-12-26 04:04:25"
+}
