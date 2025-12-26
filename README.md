@@ -45,10 +45,16 @@ exp5_pod2_coordinated/
 pip install -r requirements.txt
 ```
 
-### 2. Validate Setup
+### 2. Setup Ollama & llama3 Model
 ```bash
-python3 validate_experiment5.py
-# Should show: 5/5 checks passed
+# Install Ollama (if not already installed)
+curl -fsSL https://ollama.ai/install.sh | sh
+
+# Start Ollama service
+ollama serve &
+
+# Pull llama3 model (takes 5-10 minutes)
+ollama pull llama3
 ```
 
 ### 3. Run Experiment

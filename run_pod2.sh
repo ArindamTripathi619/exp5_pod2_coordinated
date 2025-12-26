@@ -27,9 +27,44 @@ pip install -q -r requirements.txt
 echo "✓ Dependencies installed"
 echo ""
 
+# Setup Ollama and llama3 model
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Step 2: Setting up Ollama and llama3 model..."
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+# Check if Ollama is installed
+if ! command -v ollama &> /dev/null; then
+    echo "Installing Ollama..."
+    curl -fsSL https://ollama.ai/install.sh | sh
+    echo "✓ Ollama installed"
+else
+    echo "✓ Ollama already installed"
+fi
+
+# Start Ollama service
+if ! pgrep -x "ollama" > /dev/null; then
+    echo "Starting Ollama service..."
+    nohup ollama serve > /tmp/ollama_pod2.log 2>&1 &
+    sleep 5
+    echo "✓ Ollama service started"
+else
+    echo "✓ Ollama service already running"
+fi
+
+# Pull llama3 model if not present
+if ! ollama list | grep -q "llama3"; then
+    echo "Pulling llama3 model (this may take 5-10 minutes)..."
+    ollama pull llama3
+    echo "✓ llama3 model downloaded"
+else
+    echo "✓ llama3 model already available"
+fi
+
+echo ""
+
 # Validate code
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 2: Validating code structure..."
+echo "Step 3: Validating code structure..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 python3 validate_experiment5.py
 
@@ -41,7 +76,7 @@ echo ""
 
 # Run experiment
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Step 3: Running Experiment 5 - COORDINATED Configuration"
+echo "Step 4: Running Experiment 5 - COORDINATED Configuration"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "⏱️  Start time: $(date)"
 echo ""
