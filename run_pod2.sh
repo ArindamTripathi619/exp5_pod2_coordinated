@@ -81,6 +81,9 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "⏱️  Start time: $(date)"
 echo ""
 
+# Create results directory if it doesn't exist
+mkdir -p results
+
 # Determine if running in background or foreground
 BACKGROUND=${BACKGROUND:-false}
 
