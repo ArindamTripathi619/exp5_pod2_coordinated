@@ -100,11 +100,11 @@ def run_experiment_5(
     start_time = time.time()
     
     # Process each attack prompt multiple times
-    for attack_idx, attack_data in enumerate(ATTACK_PROMPTS):
+    for attack_idx, (attack_id, attack_data) in enumerate(ATTACK_PROMPTS.items()):
         attack_type = attack_data["type"]
-        attack_prompt = attack_data["prompt"]
+        attack_prompt = attack_data["text"]  # Changed from "prompt" to "text"
         
-        logger.info(f"\n[{attack_idx + 1}/{len(ATTACK_PROMPTS)}] Testing: {attack_type}")
+        logger.info(f"\n[{attack_idx + 1}/{len(ATTACK_PROMPTS)}] Testing: {attack_id} ({attack_type})")
         
         for trial in range(num_trials):
             total_requests += 1
