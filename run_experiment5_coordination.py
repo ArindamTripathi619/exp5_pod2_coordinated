@@ -66,6 +66,13 @@ def run_experiment_5(
     # Determine coordination setting
     coordination_enabled = (config_name == "coordinated")
     
+    # Create results directory if it doesn't exist
+    import os
+    output_dir = os.path.dirname(output_db)
+    if output_dir:
+        os.makedirs(output_dir, exist_ok=True)
+        logger.info(f"Results directory ready: {output_dir}")
+    
     # Initialize database
     db = Database(output_db)
     
